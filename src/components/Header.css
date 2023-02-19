@@ -2,9 +2,14 @@ ul{
     list-style: none;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 
 li{
     padding: 1rem;
+}
+
+button{
+    background-color: yellow;
 }

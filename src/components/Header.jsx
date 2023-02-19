@@ -1,16 +1,15 @@
 import "./Header.css"
 import { NavLink } from "react-router-dom"
+import { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 const Header = () =>{
+    const { user, logout } = useContext(UserContext);
     return <header>
-        <h2> FavFilms </h2>
         <ul>
             <li>
-                <NavLink to="/">Home</NavLink>
+                {user && <button class="button-33" onClick={() => logout()}>Logout</button>}
             </li>
-            <li>
-                <NavLink to="/favfilms">FavFilms</NavLink>
-            </li>    
             <li>
                 <NavLink to="/about">About</NavLink>    
             </li>

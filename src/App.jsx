@@ -1,13 +1,21 @@
 import './App.css'
-import Header from './components/Header'
 import Footer from './components/Footer'
-import { Outlet } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import FavFilms from './pages/FavFilms'
+import NotFound from './pages/NotFound'
+import ProtectedRoute from "./components/ProtectedRoute";
+import Header from "./components/Header"
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Outlet/>
+      <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path='/favfilms' element={<ProtectedRoute><FavFilms/></ProtectedRoute>}/>
+          <Route path="*" element={<NotFound/>}/>
+      </Routes>
       <Footer/>
     </div>
   )

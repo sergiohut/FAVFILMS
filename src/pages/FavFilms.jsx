@@ -1,6 +1,9 @@
 import "./FavFilms.css"
 import { useState, useEffect } from "react"
 
+
+
+
 const FavFilms = () =>{
     const [filmInfo, setFilmInfo] = useState([]);
     const [filteredFilm, setFilteredFilm] = useState([])
@@ -19,30 +22,36 @@ const FavFilms = () =>{
         console.log(filter)
     }
 
+    const getFilm = (id) => {
+        data.find((film) => film.id === id )
+    }
+
     useEffect(() => {
         getFilmInfo();
     },[]);
 
     return (
         <div>
+  
         <h2> Mis películas favoritas</h2>
+        <div class="menu"> 
         <input type="text" 
         onChange={(ev) => {
             filterData(ev.target.value)
         }}></input>
-        <button onClick={() => {
+        <button class="button-33" onClick={() => {
             const drama = filmInfo.filter((film) => film.genre === "Drama");
             setFilteredFilm(drama);
         }}>Drama</button>
-        <button onClick={() => {
+        <button class="button-33" onClick={() => {
             const comedia = filmInfo.filter((film) => film.genre === "Comedia");
             setFilteredFilm(comedia);
         }}>Comedia</button>
-        <button onClick={() => {
+        <button class="button-33" onClick={() => {
             const terror = filmInfo.filter((film) => film.genre === "Terror");
             setFilteredFilm(terror);
         }}>Terror</button>
-        <p> Componente Galeria</p>
+        </div>
         <div className="gallery">
         {filteredFilm.length ? (filteredFilm.map((film) => (
             <div key={film.id}>
