@@ -8,10 +8,13 @@ const Header = () =>{
     return <header>
         <ul>
             <li>
-                {user && <button class="button-33" onClick={() => logout()}>Logout</button>}
+                {user && <button className="button-33" onClick={() => logout()}>Logout</button>}
             </li>
             <li>
-                <NavLink to="/about">About</NavLink>    
+            {user && <NavLink to="/favfilms">Películas</NavLink> } 
+            </li>
+            <li>
+                <NavLink to="/about">About</NavLink>   
             </li>
 
 

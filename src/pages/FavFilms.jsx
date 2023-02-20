@@ -1,5 +1,7 @@
 import "./FavFilms.css"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
+import BasicRating from "../components/Rating";
 
 
 
@@ -13,17 +15,15 @@ const FavFilms = () =>{
         const data = await res.json();
         setFilmInfo(data); 
         setFilteredFilm(data);
-        console.log(filmInfo);
     };
 
     const filterData = (keyword) => {
         const filter = filmInfo.filter((film) => film.title.includes(keyword));
         setFilteredFilm(filter);
-        console.log(filter)
     }
 
     const getFilm = (id) => {
-        data.find((film) => film.id === id )
+        return data.find((film) => film.id === id )
     }
 
     useEffect(() => {
@@ -34,20 +34,20 @@ const FavFilms = () =>{
         <div>
   
         <h2> Mis películas favoritas</h2>
-        <div class="menu"> 
+        <div className="menu"> 
         <input type="text" 
         onChange={(ev) => {
             filterData(ev.target.value)
         }}></input>
-        <button class="button-33" onClick={() => {
+        <button className="button-33" onClick={() => {
             const drama = filmInfo.filter((film) => film.genre === "Drama");
             setFilteredFilm(drama);
         }}>Drama</button>
-        <button class="button-33" onClick={() => {
+        <button className="button-33" onClick={() => {
             const comedia = filmInfo.filter((film) => film.genre === "Comedia");
             setFilteredFilm(comedia);
         }}>Comedia</button>
-        <button class="button-33" onClick={() => {
+        <button className="button-33" onClick={() => {
             const terror = filmInfo.filter((film) => film.genre === "Terror");
             setFilteredFilm(terror);
         }}>Terror</button>
@@ -55,8 +55,11 @@ const FavFilms = () =>{
         <div className="gallery">
         {filteredFilm.length ? (filteredFilm.map((film) => (
             <div key={film.id}>
-                <h3>{film.title}</h3>
                 <img src={film.image}></img>
+                <h3>{film.title}</h3>
+                <Link to = {`/favfilms/${film.id}`}> + Info </Link>
+                <BasicRating/>
+
             </div>
         ))
         ) : (<h4> No hay resultados que coincidan con la busqueda</h4>)}

@@ -28,7 +28,7 @@ input{
 }
 
 .loginCard{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 1rem 4rem;
     -webkit-box-shadow: 10px 10px 43px -18px rgba(0,0,0,0.75);

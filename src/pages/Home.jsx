@@ -18,7 +18,7 @@ const Home = () =>{
         <h4> Introduce tu nombre para acceder</h4>
         <form>
         <input type="text" placeholder="Nombre de usuario" ref={inputRef} required></input>
-        <button class="button-33" type="submit" onClick={() => login(inputRef.current.value)}>Login</button>
+        <button className="button-33" type="submit" onClick={() => login(inputRef.current.value)}>Login</button>
         </form>
         </div>
         </main>

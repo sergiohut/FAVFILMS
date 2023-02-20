@@ -6,6 +6,7 @@ import FavFilms from './pages/FavFilms'
 import NotFound from './pages/NotFound'
 import ProtectedRoute from "./components/ProtectedRoute";
 import Header from "./components/Header"
+import FilmDetail from './pages/FilmDetail'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path='/favfilms' element={<ProtectedRoute><FavFilms/></ProtectedRoute>}/>
+          <Route path='/favfilms/:id' element={<FilmDetail/>}/>
           <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
